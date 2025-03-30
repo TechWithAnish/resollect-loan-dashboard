@@ -1,0 +1,28 @@
+.sidebar {
+    width: 200px;
+    background: #f8f9fa;
+    padding: 20px;
+    height: 100vh;
+    border-right: 1px solid #ddd;
+  }
+  .logo {
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  .sidebar li {
+    padding: 10px;
+    cursor: pointer;
+  }
+  .sidebar li.active {
+    background: #007bff;
+    color: white;
+    border-radius: 5px;
+  }
+  .sidebar li:hover {
+    background: #e0e0e0;
+    border-radius: 5px;
+  }

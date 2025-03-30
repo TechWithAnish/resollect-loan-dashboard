@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import Sidebar from './components/Sidebar'; // Corrected import
+import FilterSection from './components/FilterSection';
+import DataTable from './components/DataTable';
+import Pagination from './components/Pagination';
+import "./App.css";
 
 function App() {
+  const [filter, setFilter] = useState('');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Sidebar />
+      <div className="main-content">
+        <header>
+          <h1>Portfolio</h1>
+          <div className="tabs">
+            <button>All</button>
+            <button>Pre-Screened</button>
+            <button>NPA</button>
+            <button>Symbolic Possession</button>
+            <button>DM Order</button>
+            <button>Physical Possession</button>
+            <button>Auctions</button>
+          </div>
+        </header>
+        <FilterSection onFilterChange={setFilter} />
+        <DataTable filter={filter} />
+        <Pagination />
+      </div>
     </div>
   );
 }
