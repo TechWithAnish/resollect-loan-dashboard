@@ -1,32 +1,92 @@
 .app {
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* Ensure sidebar and main content are side by side */
+  min-height: 100vh; /* Ensure the app takes up the full viewport height */
 }
-.main-content {
-  flex: 1;
-  padding: 20px;
-}
+
 .sidebar {
-  width: 100%;
-  height: auto;
+  width: 200px; /* Fixed width for the sidebar when open */
+  flex-shrink: 0; /* Prevent the sidebar from shrinking */
 }
-@media (min-width: 768px) {
+
+.sidebar.collapsed {
+  width: 60px; /* Width when collapsed */
+}
+
+.main-content {
+  flex: 1; /* Take up the remaining space */
+  padding: 20px;
+  overflow-x: auto; /* Allow horizontal scrolling if content overflows */
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.tab {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  background: #f0f0f0;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.tab:hover {
+  background: #e0e0e0;
+}
+
+.tab.active {
+  background: #007bff;
+  color: white;
+  border: 1px solid #007bff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive design: Stack sidebar and main content on smaller screens */
+@media (max-width: 768px) {
   .app {
-    flex-direction: row;
+    flex-direction: column;
   }
+
   .sidebar {
-    width: 200px;
-    height: 100vh;
+    width: 100%;
+    height: auto;
+  }
+
+  .sidebar.collapsed {
+    width: 100%;
+  }
+
+  .main-content {
+    padding: 10px;
   }
 }
+
 .filter-section {
   flex-direction: column;
 }
+
 @media (min-width: 768px) {
   .filter-section {
     flex-direction: row;
   }
 }
+
 .data-table {
   display: block;
   overflow-x: auto;
